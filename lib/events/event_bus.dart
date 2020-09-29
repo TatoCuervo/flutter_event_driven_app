@@ -9,14 +9,15 @@ class EventBus {
 
   static final EventBus _instance = EventBus._internal();
 
-  EventBus._internal();
+  EventBus._internal() {
+    _connectedEvent$ = _event$.publish();
+  }
 
   factory EventBus() {
     return _instance;
   }
 
   start() {
-    _connectedEvent$ = _event$.publish();
     _connectedEvent$.connect();
   }
 

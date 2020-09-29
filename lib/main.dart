@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_event_driven_app/behaviors/behavior_register.dart';
 import 'package:flutter_event_driven_app/connectors/counter_connector.dart';
 import 'package:flutter_event_driven_app/events/event_bus.dart';
 import 'package:flutter_event_driven_app/my_home.dart';
 
 void main() {
+  // Before starting the event bus, register all needed behaviors.
+  BehaviorRegister().registerAll();
+
   // start the Event bus
   EventBus().start();
   runApp(MyApp());
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Event Driven Counter App',
       theme: ThemeData(
         // This is the theme of your application.
         //
